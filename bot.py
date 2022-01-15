@@ -5,8 +5,11 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
+invites_file = 'invites.xlsx'
+output_file = 'output.xlsx'
+
 invites = []
-df = pd.read_excel('invites.xlsx')
+df = pd.read_excel(invites_file)
 invites.append(df.columns.values[0])
 invites.extend(df.iloc[:, 0].tolist())
 
@@ -34,4 +37,4 @@ for inv in range(len(invites)):
   time.sleep(3)
 
 df1 = pd.DataFrame(raw_data, columns=['Invite Link', 'Online', 'Offline'])
-df1.to_excel("output.xlsx")
+df1.to_excel(output_file)
